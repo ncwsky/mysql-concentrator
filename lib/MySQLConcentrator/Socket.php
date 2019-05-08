@@ -4,26 +4,23 @@ namespace MySQLConcentrator;
 
 class Socket
 {
-  static function error_code($socket)
-  {
-    if ($socket === FALSE)
+    static function error_code($socket)
     {
-      $error_code = socket_last_error();
+        if ($socket === false) {
+            $error_code = socket_last_error();
+        } else {
+            $error_code = socket_last_error($socket);
+        }
+        return $error_code;
     }
-    else
+
+    static function str_error($socket)
     {
-      $error_code = socket_last_error($socket);
+        return socket_strerror(self::error_code($socket));
     }
-    return $error_code;
-  }
 
-  static function str_error($socket)
-  {
-    return socket_strerror(self::error_code($socket));
-  }
-
-  static function std_error($message, $socket)
-  {
-    return "$message: (" . self::error_code($socket) . ") " . self::str_error($socket) . ".";
-  }
+    static function std_error($message, $socket)
+    {
+        return "$message: (" . self::error_code($socket) . ") " . self::str_error($socket) . ".";
+    }
 }

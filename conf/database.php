@@ -1,9 +1,7 @@
 <?php 
 
-$databases = array
-(
-  'test' => array
-  (
+$databases = array(
+  'test' => array(
     'driver' => 'mysql',
     'database' => 'mysql_concentrator_test',
     'user_name' => 'mysql_concen',

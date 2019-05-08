@@ -2,5 +2,5 @@
 
 function path_join()
 {
-  return implode(DIRECTORY_SEPARATOR, func_get_args());
+    return implode(DIRECTORY_SEPARATOR, func_get_args());
 }
